@@ -1,6 +1,5 @@
 import { Webhook } from 'svix';
 import { headers } from 'next/headers';
-import { clerkClient, WebhookEvent } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import User from '@/modals/user-modal';
 
@@ -65,14 +64,6 @@ export async function POST(req) {
 
         const newUser = await User.create(user);
 
-        if (newUser) {
-            await clerkClient.users.updateUserMetadata(id, {
-                publicMetadata: {
-                    userId: newUser._id
-                }
-            });
-        }
-
         return NextResponse.json({ message: 'New user created', user: newUser });
     }
 
@@ -88,7 +79,7 @@ export async function POST(req) {
                 firstName: first_name,
                 lastName: last_name
             },
-            { new: true } // Return the updated user
+            { new: true }
         );
 
         if (user) {
@@ -110,9 +101,6 @@ export async function POST(req) {
 
         return new Response('User not found for deletion', { status: 404 });
     }
-
-    console.log(`Webhook with an ID of ${id} and type of ${eventType}`);
-    console.log('Webhook body:', body);
 
     return new Response('', { status: 200 });
 }
