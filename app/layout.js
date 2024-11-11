@@ -1,6 +1,5 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import ClerkProvider from '@/Provider/ClerkProvider';
 import { ThemeProvider } from '@/Provider/ThemeProvider';
 import { dbConnect } from '@/lib/db-connect';
 
@@ -16,14 +15,12 @@ export default async function RootLayout({ children }) {
     await dbConnect();
 
     return (
-        <ClerkProvider>
-            <html lang='en' suppressHydrationWarning>
-                <body>
-                    <ThemeProvider attribute='class' defaultTheme='dark' disableTransitionOnChange>
-                        {children}
-                    </ThemeProvider>
-                </body>
-            </html>
-        </ClerkProvider>
+        <html lang='en' suppressHydrationWarning>
+            <body>
+                <ThemeProvider attribute='class' defaultTheme='dark' disableTransitionOnChange>
+                    {children}
+                </ThemeProvider>
+            </body>
+        </html>
     );
 }
