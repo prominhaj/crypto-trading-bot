@@ -1,6 +1,6 @@
 'use server';
 
-import { SignupFormSchema } from '@/lib/definitions';
+import { LoginFormSchema, SignupFormSchema } from '@/lib/definitions';
 import { createSession, deleteSession } from '@/lib/session';
 import User from '@/modals/user-modal';
 import { redirect } from 'next/navigation';
@@ -47,23 +47,39 @@ export async function signup(state, formData) {
     redirect('/dashboard');
 }
 
-export const loginUser = async (email, password) => {
-    const user = await getUserByEmail(email);
+export const signIn = async (state, formData) => {
+    // Validate form fields
+    const validatedFields = LoginFormSchema.safeParse({
+        email: formData.get('email'),
+        password: formData.get('password')
+    });
 
-    if (!user) {
+    // If any form fields are invalid, return early
+    if (!validatedFields.success) {
         return {
-            success: false,
-            email: true,
-            message: 'Email is not valid'
+            errors: validatedFields.error.flatten().fieldErrors
         };
     }
 
-    if (user?.password !== password) {
-        return {
-            success: false,
-            password: true,
-            message: 'Invalid password'
+    const { email, password } = validatedFields.data;
+
+    const user = await getUserByEmail(email);
+
+    if (!user) {
+        const errors = {
+            email: ['Email is not valid']
         };
+        return { errors };
+    }
+
+    // Check Password
+    const isPasswordMatched = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordMatched) {
+        const errors = {
+            password: ['Password is not Invalid']
+        };
+        return { errors };
     }
 
     // Create a session for the user

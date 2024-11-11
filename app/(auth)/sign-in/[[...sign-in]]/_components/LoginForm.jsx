@@ -1,48 +1,23 @@
 "use client";
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { useState } from 'react';
+import { useActionState } from 'react';
+import { signIn } from '@/app/actions/auth';
+import FormControl from '@/components/globals/FormControl/FormControl';
+import SubmitButton from '@/components/globals/Buttons/submit-button';
 
 const LoginForm = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleLogin = (e) => {
-
-    };
+    const [state, action] = useActionState(signIn, undefined);
 
     return (
         <Card className="w-full p-5 md:max-w-md md:p-8">
             <h1 className="mb-8 text-3xl font-bold text-center">Login</h1>
-            <form action={handleLogin} className="space-y-6">
-                <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <Button type="submit" className="w-full">
+            <form action={action} className="space-y-6">
+                <FormControl name="email" label="Email" error={state?.errors?.email} />
+                <FormControl name="password" label="Password" error={state?.errors?.password} />
+                <SubmitButton>
                     Login
-                </Button>
+                </SubmitButton>
                 <p className="text-sm text-center">
                     Don&apos;t have an account?{' '}
                     <Link href="/sign-up" className="text-primary hover:underline">
