@@ -11,7 +11,7 @@ const RegisterForm = () => {
     const [state, action] = useActionState(signup, undefined);
 
     return (
-        <Card className="w-full max-w-md p-5 md:p-8">
+        <Card className="w-full max-w-md p-5 md:p-8 rounded-xl bg-muted/50">
             <h1 className="mb-8 text-3xl font-bold text-center">Register</h1>
             <form action={action} className="space-y-6">
                 <FormControl name="name" label="Name" error={state?.errors?.name} />

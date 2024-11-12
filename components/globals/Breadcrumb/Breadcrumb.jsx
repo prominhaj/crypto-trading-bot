@@ -33,7 +33,7 @@ export default function BreadcrumbPath() {
                         <React.Fragment key={index}>
                             <BreadcrumbItem>
                                 {isActive ? (
-                                    <span className="font-semibold text-black dark:text-white">{formattedPath}</span>
+                                    <span className="text-black dark:text-white">{formattedPath}</span>
                                 ) : (
                                     <BreadcrumbLink href={`/${['dashboard', ...paths.slice(0, index + 1)].join('/')}`}>
                                         {formattedPath}

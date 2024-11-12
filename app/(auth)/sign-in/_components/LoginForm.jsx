@@ -10,7 +10,7 @@ const LoginForm = () => {
     const [state, action] = useActionState(signIn, undefined);
 
     return (
-        <Card className="w-full p-5 md:max-w-md md:p-8">
+        <Card className="w-full p-5 md:max-w-md md:p-8 rounded-xl bg-muted/50">
             <h1 className="mb-8 text-3xl font-bold text-center">Login</h1>
             <form action={action} className="space-y-6">
                 <FormControl name="email" label="Email" error={state?.errors?.email} />

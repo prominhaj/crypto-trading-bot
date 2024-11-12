@@ -44,7 +44,7 @@ export async function signup(state, formData) {
     // Create a session for the user
     await createSession(createdUser?._id.toString());
 
-    redirect('/dashboard');
+    redirect('/exchange-info');
 }
 
 export const signIn = async (state, formData) => {
