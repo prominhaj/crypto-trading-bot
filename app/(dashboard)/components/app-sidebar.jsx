@@ -23,6 +23,7 @@ import {
     Map,
     PieChart,
 } from 'lucide-react';
+import ChangeBotStatus from "./change-bot-status";
 
 export function AppSidebar({ sessionUser, ...props }) {
 
@@ -143,6 +144,7 @@ export function AppSidebar({ sessionUser, ...props }) {
                 <NavProjects projects={data.projects} />
             </SidebarContent>
             <SidebarFooter>
+                <ChangeBotStatus isBotAction={sessionUser?.isBotActive} />
                 <NavUser user={data.user} />
             </SidebarFooter>
             <SidebarRail />

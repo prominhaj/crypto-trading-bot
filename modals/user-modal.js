@@ -16,6 +16,18 @@ const userSchema = new Schema(
             type: String,
             required: false
         },
+        exchanges: [
+            {
+                type: Array,
+                required: false,
+                default: []
+            }
+        ],
+        isBotActive: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
         role: {
             type: String,
             required: true,

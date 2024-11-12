@@ -3,9 +3,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-const FormControl = ({ label, name, type = "text", defaultValue, error, required = false }) => {
+const FormControl = ({ label, name, type = "text", defaultValue, error, required = true }) => {
     return (
-        <div className="space-y-2">
+        <div className="space-y-1.5">
             <Label htmlFor={name}>{label}</Label>
             <Input
                 className={cn(error && "!border-red-500")}

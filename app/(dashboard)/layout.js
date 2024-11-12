@@ -4,6 +4,7 @@ import { getSessionUser } from '@/lib/dal';
 import { AppSidebar } from './components/app-sidebar';
 import BreadcrumbPath from '@/components/globals/Breadcrumb/Breadcrumb';
 import ThemeToggle from '@/components/globals/Theme-Toggle/Theme-Toggle';
+import { redirect } from 'next/navigation';
 
 export const metadata = {
     title: 'Dashboard',
@@ -12,6 +13,10 @@ export const metadata = {
 
 export default async function DashboardLayout({ children }) {
     const sessionUser = await getSessionUser();
+
+    if (!sessionUser?.exchanges?.length > 0) {
+        redirect('/exchange-info');
+    }
 
     return (
         <SidebarProvider>
