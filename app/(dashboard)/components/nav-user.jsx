@@ -5,7 +5,6 @@ import {
     Bell,
     ChevronsUpDown,
     CreditCard,
-    LogOut,
     Sparkles,
 } from "lucide-react"
 
@@ -29,6 +28,8 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar"
+import Image from "next/image"
+import Logout from "@/components/globals/logout"
 
 export function NavUser({
     user,
@@ -45,8 +46,10 @@ export function NavUser({
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
                             <Avatar className="w-8 h-8 rounded-lg">
-                                <AvatarImage src={user.avatar} alt={user.name} />
-                                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                                <AvatarImage src={user.photo} alt={user.name} />
+                                <AvatarFallback className="rounded-lg">
+                                    <Image src="/avater.webp" width={40} height={40} alt="Avater" />
+                                </AvatarFallback>
                             </Avatar>
                             <div className="grid flex-1 text-sm leading-tight text-left">
                                 <span className="font-semibold truncate">{user.name}</span>
@@ -97,8 +100,7 @@ export function NavUser({
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            <LogOut />
-                            Log out
+                            <Logout />
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

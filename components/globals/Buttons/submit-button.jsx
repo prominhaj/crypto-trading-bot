@@ -4,11 +4,11 @@ import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
 import { useFormStatus } from 'react-dom';
 
-const SubmitButton = ({ children, className, ...props }) => {
+const SubmitButton = ({ children, className, variant, size, ...props }) => {
     const { pending } = useFormStatus();
 
     return (
-        <Button disabled={pending} type="submit" className={cn(className, "w-full")} {...props}>
+        <Button variant={variant} size={size} disabled={pending} type="submit" className={cn(className, "w-full")} {...props}>
             {pending ? (
                 <>
                     <Loader2 className="animate-spin" />

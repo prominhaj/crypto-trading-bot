@@ -90,5 +90,5 @@ export const signIn = async (state, formData) => {
 
 export const logout = async () => {
     deleteSession();
-    redirect('/login');
+    redirect('/sign-in');
 };
