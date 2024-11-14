@@ -23,6 +23,38 @@ const userSchema = new Schema(
                 default: []
             }
         ],
+        tradeSettings: {
+            symbol: {
+                type: String,
+                required: false,
+                default: 'ETHUSDT'
+            },
+            interval: {
+                type: Number,
+                required: false,
+                default: 5
+            },
+            sl_percentage: {
+                type: Number,
+                required: false,
+                default: 1
+            },
+            tp_percentage: {
+                type: Number,
+                required: false,
+                default: 0
+            },
+            sl_tp_order_type: {
+                type: String,
+                required: false,
+                default: 'limit'
+            }
+        },
+        selectedExchange: {
+            type: String,
+            required: false,
+            default: 'bybit'
+        },
         isBotActive: {
             type: Boolean,
             required: false,

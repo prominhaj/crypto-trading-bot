@@ -16,8 +16,8 @@ const RegisterForm = () => {
             <form action={action} className="space-y-6">
                 <FormControl name="name" label="Name" error={state?.errors?.name} />
                 <FormControl name="email" label="Email" error={state?.errors?.email} />
-                <FormControl name="password" label="Password" error={state?.errors?.password} />
-                <FormControl name="confirmPassword" label="Confirm Password" error={state?.errors?.confirmPassword} />
+                <FormControl type='password' name="password" label="Password" error={state?.errors?.password} />
+                <FormControl type='password' name="confirmPassword" label="Confirm Password" error={state?.errors?.confirmPassword} />
                 <SubmitButton>
                     Sign Up
                 </SubmitButton>

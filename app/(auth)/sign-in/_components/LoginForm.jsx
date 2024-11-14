@@ -14,7 +14,7 @@ const LoginForm = () => {
             <h1 className="mb-8 text-3xl font-bold text-center">Login</h1>
             <form action={action} className="space-y-6">
                 <FormControl name="email" label="Email" error={state?.errors?.email} />
-                <FormControl name="password" label="Password" error={state?.errors?.password} />
+                <FormControl type='password' name="password" label="Password" error={state?.errors?.password} />
                 <SubmitButton>
                     Login
                 </SubmitButton>

@@ -29,8 +29,7 @@ export const connectExchange = async (state, formData) => {
             exchanges: {
                 name,
                 apiKey,
-                apiSecret,
-                selected: true
+                apiSecret
             }
         }
     });
