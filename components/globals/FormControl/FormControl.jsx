@@ -3,10 +3,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-const FormControl = ({ label, name, type = "text", defaultValue, error, required = true }) => {
+const FormControl = ({ label, name, type = "text", defaultValue, error, required = true, optional = false, className }) => {
     return (
-        <div className="space-y-1.5">
-            <Label htmlFor={name}>{label}</Label>
+        <div className={cn(className, "space-y-1.5")}>
+            <Label className="flex items-center justify-between" htmlFor={name}>
+                {label}
+                {
+                    optional && <small>Optional</small>
+                }
+            </Label>
             <Input
                 className={cn(error && "!border-red-500")}
                 id={name}

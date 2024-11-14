@@ -48,6 +48,11 @@ const userSchema = new Schema(
                 type: String,
                 required: false,
                 default: 'limit'
+            },
+            sl_limit_price_distance: {
+                type: Number,
+                required: false,
+                default: 0
             }
         },
         selectedExchange: {
