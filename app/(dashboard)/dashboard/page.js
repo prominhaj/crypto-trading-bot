@@ -1,10 +1,8 @@
-import { getBybitTradeHistory } from '@/app/exchanger/bybit';
+
 import DashboardAreaChart from '../components/AreaChart/Chart';
 import AnalyticCard from './_components/AnalyticCard';
 
 export default async function DashboardPage() {
-    const tradeHistory = await getBybitTradeHistory();
-    console.log({ tradeHistory });
 
     return (
         <div>
